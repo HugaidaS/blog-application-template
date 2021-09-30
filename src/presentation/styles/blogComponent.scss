@@ -1,0 +1,93 @@
+// Default options
+$defaultDuration: .3s;
+$primaryColour: #ececec;
+$secondaryColour: #666;
+$shadowColour: rgba(0, 0, 0, .6);
+
+@mixin flex-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+@mixin flex-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+@mixin hideTapHighlightColor() {
+    //Prevent highlight colour when element is tapped
+    -webkit-tap-highlight-color: #00000000;
+  }
+  
+  @mixin hardwareAccel() {
+    //Improve performance on mobile/tablet devices
+    transform: translateZ(0);
+  }
+  
+  @mixin improveAntiAlias() {
+    //Improve aliasing on mobile/tablet devices
+    box-shadow: 0 0 1px #00000000;
+  }
+
+.blog-component{
+    width: 600px;
+    height: 500px;
+    padding: 1rem;
+}
+.posts-wrapper{
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.post{
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #c0bebe;
+    box-sizing: border-box;
+    border-radius: 5px;
+    @include flex-row();
+}
+.post-content{
+  @include flex-column()
+}
+.add-block{
+  display: flex;
+  flex-direction: row;
+}
+.input-block{
+    width: 100%;
+    padding-top: 20px;
+    @include flex-row();
+
+    .input{
+        width: 80%;
+        font-size: 2rem;
+        background-color:#c0bebe;
+    }
+    .add-btn{
+        width: 15%;
+    }
+}
+.btn {
+    margin: .4em;
+    padding: 1em;
+    max-height: 40px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: $defaultDuration;
+    transition-property: transform;
+  
+    @include hideTapHighlightColor();
+    @include hardwareAccel();
+    @include improveAntiAlias();
+  
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  
+
