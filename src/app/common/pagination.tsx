@@ -83,13 +83,16 @@ export const PaginationComponent: React.FC<Props> = ({
           </button>
         )}
         {page < pagesCount - 2 && <div className="separator">...</div>}
-        <button
-          onClick={() => handlePagination(pagesCount)}
-          type="button"
-          className={page===pagesCount?"pageItem active":"pageItem"}
-        >
-          {pagesCount}
-        </button>
+        {pagesCount>1&&(
+                <button
+                  onClick={() => handlePagination(pagesCount)}
+                  type="button"
+                  className={page===pagesCount?"pageItem active":"pageItem"}
+                >
+                  {pagesCount}
+                </button>
+         )
+        }
         {page !== pagesCount && (
           <button
             onClick={() => handlePagination(page + 1)}

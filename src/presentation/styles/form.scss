@@ -1,60 +1,53 @@
-.form-style{
-	width: 550px;
+.blog__form{
+	width: 95vw;
     max-width: 600px;
 	border-radius:2px;
-	padding:20px;
-    padding-top: 0;
+	padding:20px 0;
 	font-family: Georgia, "Times New Roman", Times, serif;
 }
-.form-style h1{
-	display: block;
-	text-align: center;
-	padding: 0;
-	margin: 0px 0px 20px 0px;
-	color: #5C5C5C;
-	font-size:x-large;
-}
-.form-style ul{
+.form__list{
 	list-style:none;
 	padding:0;
-	margin:0;	
+	margin:0;
+	li{
+		display: block;
+		padding: 9px;
+		border:1px solid #c0bebe;
+		margin-bottom: 30px;
+		border-radius: 3px;
+		&:last-child{
+			border:none;
+			margin-bottom: 0px;
+			text-align: center;
+		}
+		label{
+			display: block;
+			float: left;
+			margin-top: -19px;
+			background: #FFFFFF;
+			height: 14px;
+			padding: 2px 5px 2px 5px;
+			color: #838282;
+			font-size: 14px;
+			overflow: hidden;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		span{
+			background: #F3F3F3;
+			display: block;
+			padding: 3px;
+			margin: 0 -9px -9px -9px;
+			text-align: center;
+			color: #C0C0C0;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 11px;
+		}
+		textarea{
+			resize:none;
+		}
+	}
 }
-.form-style li{
-	display: block;
-	padding: 9px;
-	border:1px solid #c0bebe;
-	margin-bottom: 30px;
-	border-radius: 3px;
-}
-.form-style li:last-child{
-	border:none;
-	margin-bottom: 0px;
-	text-align: center;
-}
-.form-style li > label{
-	display: block;
-	float: left;
-	margin-top: -19px;
-	background: #FFFFFF;
-	height: 14px;
-	padding: 2px 5px 2px 5px;
-	color: #838282;
-	font-size: 14px;
-	overflow: hidden;
-	font-family: Arial, Helvetica, sans-serif;
-}
-.form-style input[type="text"],
-.form-style input[type="date"],
-.form-style input[type="datetime"],
-.form-style input[type="email"],
-.form-style input[type="number"],
-.form-style input[type="search"],
-.form-style input[type="time"],
-.form-style input[type="url"],
-.form-style input[type="password"],
-.form-style textarea,
-.form-style select 
-{
+.blog__form__input{
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -67,21 +60,7 @@
 	padding: 0;
 	font-family: Georgia, "Times New Roman", Times, serif;
 }
-.form-style li > span{
-	background: #F3F3F3;
-	display: block;
-	padding: 3px;
-	margin: 0 -9px -9px -9px;
-	text-align: center;
-	color: #C0C0C0;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 11px;
-}
-.form-style textarea{
-	resize:none;
-}
-.form-style input[type="submit"],
-.form-style input[type="button"]{
+.action-btn{
 	background: #11324D;
 	border: none;
 	padding: 10px 20px 10px 20px;
@@ -89,9 +68,9 @@
 	border-radius: 3px;
 	color: #D2E2FF;
 	cursor: pointer;
+	margin: 10px;
 }
-.form-style input[type="submit"]:hover,
-.form-style input[type="button"]:hover{
+.action-btn:hover{
 	background: #2669a0;
 	color:#fff;
 }

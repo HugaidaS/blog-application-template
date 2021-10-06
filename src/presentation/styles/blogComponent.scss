@@ -1,8 +1,9 @@
 // Default options
 $defaultDuration: .3s;
 $primaryColour: #ececec;
-$secondaryColour: #666;
-$shadowColour: rgba(0, 0, 0, .6);
+$secondaryColour: #666666;
+$shadowColour: #00000099;
+$deleteLogo: url(./imgs/delete.png);
 
 @mixin flex-row{
     display: flex;
@@ -30,27 +31,37 @@ $shadowColour: rgba(0, 0, 0, .6);
   }
 
 .blog-component{
-    width: 600px;
-    height: 500px;
-    padding: 1rem;
-}
-.posts-wrapper{
-  height: 400px;
+  height: auto;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.posts-wrapper{
+  height: auto;
+  width: 95vw;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.posts-placeholder{
+  padding: 10px;
+  text-align: center;
 }
 .post{
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    background-color: #c0bebe;
-    box-sizing: border-box;
-    border-radius: 5px;
-    @include flex-row();
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #c0bebe59;
+  box-sizing: border-box;
+  border-radius: 5px;
+  @include flex-row();
 }
 .post-content{
-  @include flex-column()
+  @include flex-column();
+  font-size: .8rem;
 }
 .add-block{
   display: flex;
@@ -58,9 +69,8 @@ $shadowColour: rgba(0, 0, 0, .6);
 }
 .input-block{
     width: 100%;
-    padding-top: 20px;
     @include flex-row();
-
+    justify-content: center;
     .input{
         width: 80%;
         font-size: 2rem;
@@ -70,7 +80,7 @@ $shadowColour: rgba(0, 0, 0, .6);
         width: 15%;
     }
 }
-.btn {
+.action-btn--delete {
     margin: .4em;
     padding: 1em;
     max-height: 40px;
@@ -79,6 +89,10 @@ $shadowColour: rgba(0, 0, 0, .6);
     display: inline-block;
     transition-duration: $defaultDuration;
     transition-property: transform;
+    background-image: $deleteLogo;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   
     @include hideTapHighlightColor();
     @include hardwareAccel();
@@ -88,6 +102,5 @@ $shadowColour: rgba(0, 0, 0, .6);
       transform: scale(1.1);
     }
   }
-
   
 

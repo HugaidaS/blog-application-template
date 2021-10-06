@@ -10,10 +10,12 @@ interface IBlogComponentProps {
 }
 
 const BlogComponent: React.FunctionComponent<IBlogComponentProps> = (props) => {
-    const [posts, dispatch] = useReducer(reducer, [{title:"Hello",message:"World",id:1,date:new Date()}]);
+    const [posts, dispatch] = useReducer(reducer, []);
     const [currentPage,setPage]= useState(1);
+    const [visibility,setVisibility] = useState(false);
     const pageSize = 2;
-    const paginatedMovies = paginate(posts, currentPage, pageSize);
+    const paginatedPosts = paginate(posts, currentPage, pageSize);
+
 
     const handlePages = (page:number) =>{
       setPage(page)
@@ -35,8 +37,13 @@ const BlogComponent: React.FunctionComponent<IBlogComponentProps> = (props) => {
       }
     }
 
+    const switchVisivility = () => {setVisibility(!visibility)};
+
     const map = (post:IPostInterface) => {
-      const deletePost = () => dispatch({ type: "delete", post });
+      const deletePost = () => {
+        dispatch({ type: "delete", post });
+        setPage(1);
+      };
       return (
         <div className="post">
           <div className="post-content">
@@ -44,50 +51,37 @@ const BlogComponent: React.FunctionComponent<IBlogComponentProps> = (props) => {
             <p>{post.message}</p>
           </div>
           {/* <small>{post.date}</small> */}
-          <img src="./imgs/icons8-delete-64.png" className="btn" onClick={deletePost} alt="delete icon"/>
+          <div className="action-btn--delete" onClick={deletePost}></div>
         </div>
       );
     };
   
     return (
       <div className="blog-component">
-        <div className="posts-wrapper">
-          <div>
-          {paginatedMovies.map(map)}
-          </div>
-          <Pagination
-          page={currentPage}
-          totalPages={posts.length}
-          handlePagination={handlePages}
-          pageSize={pageSize}
-      />
-        </div>
+        {posts.length>0?
+                <div className="posts-wrapper">
+                  <Pagination
+                      page={currentPage}
+                      totalPages={posts.length}
+                      handlePagination={handlePages}
+                      pageSize={pageSize}
+                  />
+                  {paginatedPosts.map(map)}
+              </div>
+              :
+              <div className="posts-placeholder">
+                <h3>Write your first post!</h3>  
+              </div>
+      }
+
+
         <div className="add-block">
         <div className="input-block">
-          <FormComponent dispatchNewPost={handleAddNew}/>
+          {visibility?<FormComponent dispatchNewPost={handleAddNew} closeAction={switchVisivility}/>:<button className="action-btn" onClick={switchVisivility}>Create new post</button>}
         </div>
         <div>
         </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {/* <a target="_blank" href="https://icons8.com/icon/UU7eQ1Co0JW6/add">Add</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a> */}
       </div>
     );
 };

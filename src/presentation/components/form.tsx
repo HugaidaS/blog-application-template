@@ -2,10 +2,12 @@ import React from 'react';
 
 interface Props {
     dispatchNewPost:any;
+    closeAction:()=>void;
 }
 
 const FormComponent = (props: Props) => {
     let {dispatchNewPost} = props;
+    let {closeAction} = props;
 
     let [title,setTitle] = React.useState("");
     let [message,setMessage] = React.useState("");
@@ -55,20 +57,21 @@ const FormComponent = (props: Props) => {
 
     return (
         <div>
-        <div className="form-style">
-          <ul>
-            <li>
+        <div className="blog__form">
+          <ul className="form__list">
+            <li className="form__list__element">
               <label htmlFor="title">Title</label>
-              <input type="text" name="title" onChange={handleTitleChange}/>
+              <input type="text" name="title" className="blog__form__input" onChange={handleTitleChange}/>
               <span>Enter your title</span>
             </li>
-            <li>
+            <li className="form__list__element">
               <label htmlFor="message">Message</label>
-              <textarea name="message" rows={5} onChange={handleMessageChange}></textarea>
+              <textarea name="message" rows={5} className="blog__form__input" onChange={handleMessageChange}></textarea>
               <span>Write your message</span>
             </li>
-            <li>
-              <input type="submit" value="Post" onClick={(e)=>handleSubmit(e)}/>
+            <li className="form__list__element">
+              <input type="submit" value="Post" className="action-btn" onClick={(e)=>handleSubmit(e)}/>
+              <input type="button" value="Close" className="action-btn" onClick={closeAction}/>
             </li>
           </ul>
           </div>
